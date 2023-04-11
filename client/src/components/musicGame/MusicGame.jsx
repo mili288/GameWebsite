@@ -22,7 +22,7 @@ function MusicGame() {
 
   useEffect(() => {
     async function getRandomSong() {
-      const response = await fetch('http://localhost:3000/users/music-game/random');
+      const response = await fetch('https://randomgamesserver.onrender.com/users/music-game/random');
       const data = await response.json();
       setSong(data);
     }
