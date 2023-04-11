@@ -19,7 +19,7 @@ function Game() {
       setIsLoading(true);
       let streamer = null;
       while (!streamer || usedStreamers.some((s) => s._id === streamer._id)) {
-        const response = await axios.get('http://localhost:3000/users/streamers/random');
+        const response = await axios.get('https://randomgamesserver.onrender.com/users/streamers/random');
         streamer = response.data;
       }
       if (usedStreamers.length === 20) {

@@ -21,7 +21,7 @@ function WeebTest() {
       setIsLoading(true);
       let streamer = null;
       while (!streamer || usedStreamers.some((s) => s._id === streamer._id)) {
-        const response = await axios.get('http://localhost:3000/users/guess-anime/random');
+        const response = await axios.get('https://randomgamesserver.onrender.com/users/guess-anime/random');
         streamer = response.data;
       }
       if (usedStreamers.length === 20) {

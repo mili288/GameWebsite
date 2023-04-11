@@ -44,7 +44,7 @@ function PixelGame() {
       setGameOver(true);
       return;
     }
-    axios.get('http://localhost:3000/users/pixel-game/random')
+    axios.get('https://randomgamesserver.onrender.com/users/pixel-game/random')
       .then(response => {
         setImage(response.data.image);
         setGame(response.data);

@@ -47,7 +47,7 @@ function MusicGame() {
   
 
   function getRandomSong() {
-    fetch('http://localhost:3000/users/music-game/random')
+    fetch('https://randomgamesserver.onrender.com/users/music-game/random')
       .then((response) => response.json())
       .then((data) => {
         setSong(data);

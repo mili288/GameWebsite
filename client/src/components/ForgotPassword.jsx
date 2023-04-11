@@ -47,7 +47,7 @@ const ResetPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`http://localhost:3000/users/reset-password/${token}`, { password });
+      const response = await axios.post(`https://randomgamesserver.onrender.com/users/reset-password/${token}`, { password });
       if (response && response.data) {
         setMessage(response.data.message);
       }

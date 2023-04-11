@@ -6,7 +6,7 @@ function Game() {
 
   async function handleAddStreamer(name, image) {
     try {
-      const response = await axios.post('http://localhost:3000/users/streamers', { name, image });
+      const response = await axios.post('https://randomgamesserver.onrender.com/users/streamers', { name, image });
       setStreamer(response.data);
     } catch (error) {
       console.error(error);
