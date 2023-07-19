@@ -6,13 +6,16 @@ import { Anime } from '../models/AnimeGameModel.js';
 import { Music } from '../models/MusicGameModel.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
-import base64 from 'base-64';
+import { Configuration, OpenAIApi } from "openai";
+import * as dotenv from 'dotenv';
 
 import { v4 as uuidv4 } from 'uuid';
 import nodemailer from 'nodemailer';
 
 import authMiddleware from './users.js';
+import { Post } from '../models/Post.js';
+
+dotenv.config()
 
 const router = express.Router();
 
@@ -285,6 +288,48 @@ router.post('/music-game', async (req, res) => {
   res.send(music);
 });
 
+
+
+router.post('/posts', async (req, res) => {
+  try {
+    // Extract the post content from the request body
+    const { author, content, time } = req.body;
+
+    // Create a new post instance using the Post model
+    const newPost = new Post({
+      author,
+      content,
+      time,
+    });
+
+    // Save the post to the database
+    const savedPost = await newPost.save();
+
+    // Return the saved post in the response
+    res.json(savedPost);
+  } catch (error) {
+    // Handle any errors that occur during the process
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while creating the post.' });
+  }
+});
+
+
+
+// GET all posts
+router.get('/posts-all', async (req, res) => {
+  try {
+    // Retrieve all posts from the database
+    const posts = await Post.find();
+
+    // Return the posts in the response
+    res.json(posts);
+  } catch (error) {
+    // Handle any errors that occur during the process
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while retrieving the posts.' });
+  }
+});
 
 
 

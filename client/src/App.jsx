@@ -11,6 +11,7 @@ import { ForgotPassword, ResetPassword } from './components/ForgotPassword';
 import PixelGame from './components/pixelGame/PixelGame';
 import WeebTest from './components/weebTest/WeebTest';
 import MusicGame from './components/musicGame/MusicGame';
+import ChessGame from './components/GPT-Chess/ChessGame';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path="/pixel-game" element={<PixelGame />} />
         <Route path="/weeb-test" element={<WeebTest />} />
         <Route path="/music-game" element={<MusicGame />} />
+        <Route path="/chess-game" element={<ChessGame />}/>
         <Route path="*" element={<Error />} />
       </Routes>
     </Router>
